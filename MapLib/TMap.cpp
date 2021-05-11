@@ -1,20 +1,9 @@
 #include "TMap.h"
 
 template<class TK, class TV>
-void TMap<TK, TV>::Resize(int newSize) {
-    TNode<TK, TV>* tmp;
-    tmp = new TNode<TK, TV>[newSize];
-    for (int i = 0; i < std::min(this->size, newSize); i++)
-        tmp[i] = mas[i];
-    delete[] mas;
-    mas = tmp;
-    this->size = newSize;
-}
-
-template<class TK, class TV>
 TMap<TK, TV>::TMap(int _size) {
     if (_size <= 0)
-        throw - 1;
+        throw std::invalid_argument("wrong map size");
     this->mas = new TNode<TK, TV>[_size];
     this->size = _size;
     this->count = 0;
@@ -32,7 +21,7 @@ TMap<TK, TV>::TMap(const TMap& p) {
 template<class TK, class TV>
 TMap<TK, TV>::TMap(int _size, TNode<TK, TV>* _mas) {
     if (_size <= 0)
-        throw - 1;
+        throw std::invalid_argument("wrong map size");
     this->mas = new TNode<TK, TV>[_size];
     for (int i = 0; i < _size; ++i) {
         this->mas[i] = _mas[i];
