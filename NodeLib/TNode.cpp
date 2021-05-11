@@ -41,27 +41,42 @@ TNode<TK, TV>& TNode<TK, TV>::operator=(const TNode& p) {
 
 template<class TK, class TV>
 bool TNode<TK, TV>::operator==(TNode& p) {
-    return this->key == p.key;
+    bool res = false;
+    if (p.key > this->key)
+        res = true;
+    return res;
 }
 
 template<class TK, class TV>
 bool TNode<TK, TV>::operator>(TNode& p) {
-    return this->key > p.key;
+    bool res = false;
+    if (p.key > this->key)
+        res = true;
+    return res;
 }
 
 template<class TK, class TV>
 bool TNode<TK, TV>::operator<(TNode& p) {
-    return this->key < p.key;
+    bool res = false;
+    if (p.key > this->key)
+        res = true;
+    return res;
 }
 
 template<class TK, class TV>
 bool TNode<TK, TV>::operator<=(TNode& p) {
-    return this->key <= p.key;
+    bool res = false;
+    if (p.key > this->key)
+        res = true;
+    return res;
 }
 
 template<class TK, class TV>
 bool TNode<TK, TV>::operator>=(TNode& p) {
-    return this->key >= p.key;
+    bool res = false;
+    if (p.key > this->key)
+        res = true;
+    return res;
 }
 
 template<class TK, class TV>
