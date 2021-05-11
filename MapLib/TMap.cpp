@@ -1,6 +1,20 @@
 #include "TMap.h"
 
 template<class TK, class TV>
+void TMap<TK, TV>::Resize(int newSize)
+{
+    if (newSize > this->size) {
+        auto* tmp = new TNode<TK, TV>[newSize];
+        for (int i = 0; i < newSize; ++i) {
+            tmp[i] = this->mas[i];
+        }
+        delete[] this->mas;
+        this->mas = tmp;
+        this->size = newSize;
+    }
+}
+
+template<class TK, class TV>
 TMap<TK, TV>::TMap(int _size) {
     if (_size <= 0)
         throw std::invalid_argument("wrong map size");
